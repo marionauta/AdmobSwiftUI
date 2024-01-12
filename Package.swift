@@ -4,7 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "AdmobSwiftUI",
-    platforms: [.iOS(.v15)],
+    platforms: [
+        .iOS(.v15),
+    ],
     products: [
         .library(
             name: "AdmobSwiftUI",
@@ -17,7 +19,11 @@ let package = Package(
         .target(
             name: "AdmobSwiftUI",
             dependencies: [
-                .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
+                .product(
+                    name: "GoogleMobileAds",
+                    package: "swift-package-manager-google-mobile-ads",
+                    condition: .when(platforms: [.iOS])
+                ),
             ]
         ),
     ]
