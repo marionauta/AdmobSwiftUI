@@ -1,19 +1,19 @@
-#if !os(visionOS)
+#if canImport(GoogleMobileAds)
 import GoogleMobileAds
 #endif
 import SwiftUI
 
 public extension View {
     func withAdmob() -> some View {
-        #if os(visionOS)
-        self
-        #else
+        #if canImport(GoogleMobileAds)
         modifier(AdmobViewModifier())
+        #else
+        self
         #endif
     }
 }
 
-#if !os(visionOS)
+#if canImport(GoogleMobileAds)
 private struct AdmobViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

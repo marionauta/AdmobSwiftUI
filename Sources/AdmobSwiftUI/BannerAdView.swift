@@ -1,4 +1,4 @@
-#if !os(visionOS)
+#if canImport(GoogleMobileAds)
 import GoogleMobileAds
 #endif
 import SwiftUI
@@ -24,7 +24,7 @@ public struct BannerAdView: View {
     }
 
     public var body: some View {
-        #if os(visionOS) || DEBUG
+        #if !canImport(GoogleMobileAds) || DEBUG
         EmptyView()
         #else
         if stage == .error || areAdsHidden.wrappedValue {
@@ -45,7 +45,7 @@ public struct BannerAdView: View {
     }
 }
 
-#if !os(visionOS)
+#if canImport(GoogleMobileAds)
 private struct BannerView: UIViewControllerRepresentable {
     @Binding var stage: BannerAdView.Stage
     @Binding var height: CGFloat
