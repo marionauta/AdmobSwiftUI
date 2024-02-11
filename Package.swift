@@ -6,6 +6,7 @@ let package = Package(
     name: "AdmobSwiftUI",
     platforms: [
         .iOS(.v15),
+        .macOS(.v11),
     ],
     products: [
         .library(
