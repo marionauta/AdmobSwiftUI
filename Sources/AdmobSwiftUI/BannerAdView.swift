@@ -24,8 +24,13 @@ public struct BannerAdView: View {
     }
 
     public var body: some View {
-        #if !canImport(GoogleMobileAds) || DEBUG
+        #if !canImport(GoogleMobileAds)
         EmptyView()
+        #elseif DEBUG
+        Text(verbatim: "DEBUG AD")
+            .foregroundStyle(.orange)
+            .frame(maxWidth: .infinity, maxHeight: height)
+            .background(.orange.opacity(0.25))
         #else
         if stage == .error || areAdsHidden.wrappedValue {
             EmptyView()
