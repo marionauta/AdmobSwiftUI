@@ -29,7 +29,7 @@ public struct BannerAdView: View {
         #elseif DEBUG
         Text(verbatim: "DEBUG AD")
             .foregroundStyle(.orange)
-            .frame(maxWidth: .infinity, maxHeight: height)
+            .frame(maxWidth: .infinity, minHeight: height, maxHeight: height)
             .background(.orange.opacity(0.25))
         #else
         if stage == .error || areAdsHidden.wrappedValue {
